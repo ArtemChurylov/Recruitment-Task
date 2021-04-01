@@ -19,6 +19,7 @@ public class Photo {
     @Column(name = "title")
     private String title;
 
+    @Lob
     @Column(name = "file_name")
     private String fileName;
 
