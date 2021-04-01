@@ -40,18 +40,26 @@ public class MainController {
             return "addPhotoPage";
         }
 
-        if (photoService.getAllPhotos().stream().anyMatch(photo1 -> photo1.getFileName().equals(file.getOriginalFilename()))) {
-            return "redirect:/uniqueFileNameException";
-        }
+        if (file.getOriginalFilename().endsWith(".jpg") || file.getOriginalFilename().endsWith(".png")) {
+            if (photoService.getAllPhotos().stream().anyMatch(photo1 -> photo1.getFileName().equals(file.getOriginalFilename()))) {
+                return "redirect:/uniqueFileNameException";
+            }
 
-        photoService.save(photo, file);
-        return "redirect:/";
+            photoService.save(photo, file);
+            return "redirect:/";
+
+        }else return "redirect:/fileTypeException";
     }
 
     @PostMapping("/delete/{id}")
     public String deletePhoto(@PathVariable Long id) {
         photoService.delete(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/fileTypeException")
+    public String fileTypeException() {
+        return "fileTypeException";
     }
 
     @GetMapping("/uniqueFileNameException")
