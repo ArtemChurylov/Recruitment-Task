@@ -25,8 +25,8 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
 
-//    public static String originalFilesDirectory = "../src/main/resources/static/original/";
-//    public static String scaledFilesDirectory = "../src/main/resources/static/scaled/";
+//    public static String originalFilesDirectory = System.getProperty("user.dir") + "/src/main/resources/static/original/";
+//    public static String scaledFilesDirectory = System.getProperty("user.dir") + "/src/main/resources/static/scaled/";
 //    @Override
 //    public void save(Photo photo, MultipartFile multipartFile) {
 //        if (multipartFile.getOriginalFilename().endsWith(".jpg") || multipartFile.getOriginalFilename().endsWith(".png")) {
